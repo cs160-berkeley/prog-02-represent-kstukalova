@@ -1,0 +1,101 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+ tools:context=".MainActivity">
+    <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/fred_img"-->
+        <!--android:src="@drawable/fred_160"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_marginTop="31dp" />-->
+
+    <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/lexy_img"-->
+        <!--android:src="@drawable/lexy_160"-->
+        <!--android:layout_alignTop="@+id/fred_img"-->
+        <!--android:layout_alignParentEnd="true" />-->
+
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Feed Fred"-->
+        <!--android:id="@+id/fred_btn"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_alignEnd="@+id/fred_img" />-->
+
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Feed Lexy"-->
+        <!--android:id="@+id/lexy_btn"-->
+        <!--android:layout_alignBottom="@+id/fred_btn"-->
+        <!--android:layout_alignStart="@+id/lexy_img"-->
+        <!--android:layout_alignEnd="@+id/lexy_img" />-->
+    <LinearLayout
+        android:id="@+id/mLlayoutBottomButtons"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:text="Search"
+            android:textSize="60dp"
+            android:textStyle="italic"
+            android:id="@+id/search_btn"
+            android:background="@color/red"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:text="Enter your zip-code to see who represents you!"
+        android:id="@+id/textView"
+        android:textAlignment="center"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/blue"
+        android:textColor="@color/white"
+        android:gravity="center"/>
+
+    <EditText
+        android:layout_width="200dp"
+        android:textSize="50dp"
+        android:hint="zip code"
+        android:gravity="center"
+        android:maxLength="5"
+        android:layout_height="wrap_content"
+        android:id="@+id/mZipCodeInput"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="59dp"
+        android:autoText="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Use Current Location"
+        android:textSize="30dp"
+        android:id="@+id/mCurrentLocation"
+        android:checked="false"
+        android:layout_above="@+id/mLlayoutBottomButtons"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="43dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="or"
+        android:id="@+id/textView2"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

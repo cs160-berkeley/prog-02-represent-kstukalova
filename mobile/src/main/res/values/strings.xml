@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Represent!</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <color name="red">#ff6666</color>
+    <color name="blue">#236B8E</color>
+    <color name="white">#ffffff</color>
+    <string name="title_activity_mobile_results">Search Results</string>
+    <string name="title_activity_detail_view">More Information</string>
+</resources>

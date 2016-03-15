@@ -73,10 +73,9 @@
         android:maxLength="5"
         android:layout_height="wrap_content"
         android:id="@+id/mZipCodeInput"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="59dp"
-        android:autoText="false" />
+        android:autoText="false"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -85,9 +84,8 @@
         android:textSize="30dp"
         android:id="@+id/mCurrentLocation"
         android:checked="false"
-        android:layout_above="@+id/mLlayoutBottomButtons"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="43dp" />
+        android:layout_marginTop="300dp"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -95,7 +93,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="or"
         android:id="@+id/textView2"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="230dp"/>
 
 </RelativeLayout>

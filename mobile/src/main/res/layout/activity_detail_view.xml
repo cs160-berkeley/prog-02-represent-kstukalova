@@ -4,8 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.cs160.joleary.catnip.DetailView"
+    android:baselineAligned="false"
     android:orientation="vertical">
-
+    <ScrollView android:id="@+id/ScrollView01"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+    <LinearLayout android:id="@+id/test"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="50dp"
@@ -23,8 +30,8 @@
         android:contentDescription="repr"
         android:layout_gravity="center"
         android:paddingTop="20dp"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         />
 
     <TextView
@@ -45,21 +52,49 @@
         android:id="@+id/end"
         android:layout_gravity="center_horizontal" />
 
-    <TextView
+        <TextView
+            android:paddingTop="20dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Committees"
+            android:id="@+id/committeeTitle"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:gravity="center" />
+
+        <TextView
         android:paddingTop="20dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text=""
         android:id="@+id/committee"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
         android:gravity="center" />
 
     <TextView
         android:paddingTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/bills"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Bills"
+        android:id="@+id/billsTitle"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
         android:layout_gravity="center_horizontal" />
+
+        <TextView
+        android:paddingTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text=""
+        android:id="@+id/bills"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:layout_gravity="center_horizontal" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

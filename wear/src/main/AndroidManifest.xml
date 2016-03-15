@@ -32,6 +32,10 @@
         <activity
             android:name=".Presidential"
             android:label="@string/title_activity_presidential"></activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="316bb7e48ad1aa5583dec686544271250bf8769d" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

@@ -17,18 +17,25 @@
         android:layout_height="174dp"
         android:background="#ffffff"
         android:layout_weight="1.92">
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center">
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="76dp"
+            android:layout_height="93dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="2012 Presidential"
+            android:text="2012 Presidential Votes"
             android:background="#009688"
             android:id="@+id/title"
-            android:paddingTop="35dp"
-            android:paddingLeft="20dp"
-            android:layout_gravity="center_horizontal|top" />
+            android:paddingTop="5dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:gravity="center"
 
+            android:layout_gravity="center_horizontal|top" />
+        </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,7 +46,7 @@
                 android:id="@+id/county"
                 android:layout_width="120dp"
                 android:layout_height="fill_parent"
-                android:paddingTop="15dp"
+                android:paddingTop="25dp"
                 android:text="County: "
                 android:textColor="#000000" />
 

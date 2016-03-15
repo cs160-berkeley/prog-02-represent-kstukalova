@@ -7,6 +7,7 @@ import android.os.IBinder;
 import android.util.Log;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.wearable.MessageApi;
 import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.NodeApi;
@@ -51,14 +52,21 @@ public class PhoneToWatchService extends Service {
         mApiClient.disconnect();
     }
 
-    private String createWearData(String zip, ArrayList<String> names, ArrayList<String> parties) throws JSONException {
+    private String createWearData(String zip, ArrayList<String> name, ArrayList<String> id,
+                                  ArrayList<String> picture_url, ArrayList<String> party,
+                                  ArrayList<String> term) throws JSONException {
         JSONObject data = new JSONObject();
         data.put("zip", zip);
         JSONArray representatives = new JSONArray();
-        for (int i = 0; i < names.size(); i++) {
+        for (int i = 0; i < name.size(); i++) {
             JSONObject repr = new JSONObject();
-            repr.put("name", names.get(i));
-            repr.put("party", parties.get(i));
+
+            repr.put("name", name.get(i));
+            repr.put("id", id.get(i));
+            repr.put("picture_url", picture_url.get(i));
+            repr.put("party", party.get(i));
+            repr.put("term", term.get(i));
+
             representatives.put(i, repr);
         }
         data.put("repr", representatives);
@@ -70,10 +78,14 @@ public class PhoneToWatchService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         // Which cat do we want to feed? Grab this info from INTENT
         // which was passed over when we called startService
+        // crashing here because intent is nothing
         Bundle extras = intent.getExtras();
         final String zip = extras.getString("zipcode");
-        final ArrayList<String> names = extras.getStringArrayList("names");
-        final ArrayList<String> parties = extras.getStringArrayList("parties");
+        final ArrayList<String> name = extras.getStringArrayList("name");
+        final ArrayList<String> id = extras.getStringArrayList("id");
+        final ArrayList<String> picture_url = extras.getStringArrayList("picture_url");
+        final ArrayList<String> party = extras.getStringArrayList("party");
+        final ArrayList<String> term = extras.getStringArrayList("term");
 
         // Send the message with the cat name
         new Thread(new Runnable() {
@@ -83,7 +95,8 @@ public class PhoneToWatchService extends Service {
                 mApiClient.connect();
                 //now that you're connected, send a massage with the cat name
                 try {
-                    String wearData = createWearData(zip, names, parties);
+                    String wearData = createWearData(zip, name, id, picture_url, party,
+                            term);
                     Log.i(TAG, wearData);
                     sendMessage("/data", wearData);
                 } catch (JSONException e) {

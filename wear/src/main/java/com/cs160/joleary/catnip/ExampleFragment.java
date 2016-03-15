@@ -35,6 +35,10 @@ public class ExampleFragment extends Fragment {
                 //Log.e("view", "here");
                 Intent watchIntent = new Intent(v.getContext(), WatchToPhoneService.class);
                 watchIntent.putExtra("name", getArguments().getString("name"));
+                watchIntent.putExtra("id", getArguments().getString("id"));
+                watchIntent.putExtra("picture_url", getArguments().getString("picture_url"));
+                watchIntent.putExtra("party", getArguments().getString("party"));
+                watchIntent.putExtra("term", getArguments().getString("term"));
                 v.getContext().startService(watchIntent); // i think this is wrong
             }
         });
@@ -43,7 +47,8 @@ public class ExampleFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //Log.e("im in:", "pastElection");
-                String zipCurr = getArguments().getString("name");
+                String zipCurr = getArguments().getString("zip");
+                Log.e("zip to pass: ", getArguments().getString("zip"));
                 Intent intent = new Intent(v.getContext(), Presidential.class).putExtra("zipcode", zipCurr);
                 startActivity(intent);
             }

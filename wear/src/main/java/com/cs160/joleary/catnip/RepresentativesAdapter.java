@@ -31,104 +31,59 @@ public class RepresentativesAdapter extends FragmentGridPagerAdapter {
     private final Context mContext;
     //private List mRows;
     //private final ArrayList<Page> PAGES = new ArrayList<Page>();
-    private ArrayList<String> names;
-    private ArrayList<String> parties;
-
-    /*
-    private void createFakeData() {
-        String[] temp1 = {"Senator Barbara Boxer", "Senator Dianne Feinstein", "Representative Anna G. Eshoo"};
-        names.put("94301", temp1);
-
-
-        String[] temp2 = {"Senator Barbara Boxer", "Senator Dianne Feinstein", "Representative Jackie Speier"};
-        names.put("94403", temp2);
-
-        String[] temp3 = {"Senator Kirsten E. Gillibrand", "Senator Charles E. Schumer",
-                "Representative Kathleen M. Rice", "Representative Steve Israel"};
-        names.put("11040", temp3);
-
-        id.put("Senator Barbara Boxer", 0);
-        id.put("Senator Dianne Feinstein", 1);
-        id.put("Representative Anna G. Eshoo", 2);
-        id.put("Representative Jackie Speier", 3);
-        id.put("Senator Kirsten E. Gillibrand", 4);
-        id.put("Senator Charles E. Schumer", 5);
-        id.put("Representative Kathleen M. Rice", 6);
-        id.put("Representative Steve Israel", 7);
-
-        party.put(0, "Democrat");
-        party.put(1, "Democrat");
-        party.put(2, "Democrat");
-        party.put(3, "Democrat");
-        party.put(4, "Democrat");
-        party.put(5, "Democrat");
-        party.put(6, "Democrat");
-        party.put(7, "Democrat");
-        Log.e("zipcode fakedata: ", zipcode + "OH NO NOTHING");
-        for (int k = 0; k < names.get(zipcode).length; k++) {
-//            Log.e("k", k + "");
-            String name = names.get(zipcode)[k];
-            int idCurr = id.get(name);
-            String partyCurr = party.get(idCurr);
-//            Log.e("id", idCurr + "");
-//            Log.e("party: ", partyCurr);
-            PAGES.add(new Page(name, partyCurr));
-
-        }
-    }
-    */
+    private ArrayList<String> name = new ArrayList<>();
+    private ArrayList<String> id = new ArrayList<>();
+    private ArrayList<String> picture_url = new ArrayList<>();
+    private ArrayList<String> term = new ArrayList<>();
+    private ArrayList<String> party = new ArrayList<>();
 
     RepresentativesAdapter(Context ctx, FragmentManager fm, String zipcode,
-                           ArrayList<String> names, ArrayList<String> parties
+                           ArrayList<String> name, ArrayList<String> id,
+                           ArrayList<String> picture_url, ArrayList<String> term,
+                           ArrayList<String> party
     ) {
         super(fm);
         this.zipcode = zipcode;
-        this.parties = parties;
-        this.names = names;
-//        Log.e("ZIPCODE: ", zipcode);
+        this.name = name;
+        this.id = id;
+        this.picture_url = picture_url;
+        this.term = term;
+        this.party = party;
+
         mContext = ctx;
-        //createFakeData();
-//        Log.e("here", "here");
-//        Log.e("people: ", PAGES.size() + "");
     }
 
-
-    private static class Page {
-        String name;
-        String party;
-        int cardGravity = Gravity.CENTER;
-        boolean expansionEnabled = false;
-        float expansionFactor = 2.0f;
-        int expansionDirection = CardFragment.EXPAND_UP;
-
-        Page(String name, String party) {
-            this.name = name;
-            this.party = party;
-        }
-    }
-
-//    public static class ExampleFragment extends CardFragment {
-//        @Override
-//        public View onCreateContentView(LayoutInflater inflater, ViewGroup container,
-//                                 Bundle savedInstanceState) {
-//            // Inflate the layout for this fragment
-//            return inflater.inflate(R.layout.fragment_mine, container, false);
-//        }
-//    }
 
     // Obtain the UI fragment at the specified position
     @Override
     public Fragment getFragment(int row, int col) {
         //Page page = PAGES.get(col);
-        String name = names.get(col);
-        String party = parties.get(col);
+        String current_name = name.get(col);
+        String current_id = id.get(col);
+        String current_picture_url = picture_url.get(col);
+        String current_term = term.get(col);
+        String current_party = party.get(col);
+        String zip = zipcode;
+
+        Log.e("party: ", current_party);
+        if (current_party.equals("D")) {
+            current_party = "Democrat";
+        }
+        else if (current_party.equals("R")) {
+            current_party = "Republican";
+        }
+
 //        Log.e("party", name);
         ExampleFragment fragment = new ExampleFragment();
         Bundle args = new Bundle();
 
-        args.putCharSequence("name", name);
-        args.putCharSequence("party", party);
-        args.putCharSequence("zipcode", zipcode);
+        args.putCharSequence("name", current_name);
+        args.putCharSequence("id", current_id);
+        args.putCharSequence("picture_url", current_picture_url);
+        args.putCharSequence("term", current_term);
+        args.putCharSequence("party", current_party);
+        args.putCharSequence("zip", zipcode);
+    ;
         fragment.setArguments(args);
 
         // Advanced settings (card gravity, card expansion/scrolling)
@@ -155,6 +110,6 @@ public class RepresentativesAdapter extends FragmentGridPagerAdapter {
 
     @Override
     public int getColumnCount(int row) {
-        return names.size();
+        return name.size();
     }
 }

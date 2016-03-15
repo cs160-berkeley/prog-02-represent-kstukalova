@@ -19,8 +19,15 @@ import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.NodeApi;
 import com.google.android.gms.wearable.Wearable;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 /**
@@ -76,12 +83,28 @@ public class WatchToPhoneService extends Service implements GoogleApiClient.Conn
                 });
     }
 
+    private String createWearData(String name, String id, String picture_url, String party,
+                                  String term) throws JSONException {
+        JSONObject data = new JSONObject();
+        data.put("name", name);
+        data.put("id", id);
+        data.put("picture_url", picture_url);
+        data.put("party", party);
+        data.put("term", term);
+
+        return data.toString();
+    }
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         // Which cat do we want to feed? Grab this info from INTENT
         // which was passed over when we called startService
         Bundle extras = intent.getExtras();
         final String name = extras.getString("name");
+        final String id = extras.getString("id");
+        final String picture_id = extras.getString("picture_url");
+        final String party = extras.getString("party");
+        final String term = extras.getString("term");
         final Boolean random = extras.getBoolean("random");
         Log.i(TAG, "onStartCommand " + name);
 
@@ -96,10 +119,28 @@ public class WatchToPhoneService extends Service implements GoogleApiClient.Conn
                     return; // if user clicks on screen when nothing is htere
                 }
                 else if (random) {
-                    sendMessage("/random", "");
+                    try {
+                        JSONArray all_zipcodes = new JSONArray(loadJSONFromAsset());
+                        // Log.e("all counties: ", all_zipcodes.toString());
+                        Log.e("number of zipcodes: ", all_zipcodes.length() + "");
+                        Random rn = new Random();
+                        int random_index = rn.nextInt(all_zipcodes.length());
+                        String zip = all_zipcodes.getString(random_index);
+                        sendMessage("/random", zip);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                 }
                 else {
-                    sendMessage("/name", name);
+                    try {
+                        Log.e("watch to phone: ", picture_id);
+                        String wearData = createWearData(name, id, picture_id, party, term);
+                        sendMessage("/name", wearData);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                 }
             }
         }).start();
@@ -119,5 +160,19 @@ public class WatchToPhoneService extends Service implements GoogleApiClient.Conn
         }
         Log.i(TAG, "sendMessage " + path  + " " + text + " done");
     }
-
+    public String loadJSONFromAsset() {
+        String json = null;
+        try {
+            InputStream is = getAssets().open("all_zips.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+    }
 }

@@ -1,6 +1,5 @@
 # PROG 02: Represent!
 
-Briefly describe your app here.
 Your “go-to” application for election information!  
 
 ## Authors

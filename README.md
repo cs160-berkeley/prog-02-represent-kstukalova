@@ -8,7 +8,7 @@ Ekaterina Stukalova ([katya.stukalova@berkeley.edu](mailto:your_email@berkeley.e
 
 ## Demo Video
 
-See [Represent!] (https://link_to_your_video) in action!
+See [Represent!] (https://www.youtube.com/watch?v=tNpI2YTexMs&edit=vd) in action!
 
 ## Screenshots
 Home Screen:  

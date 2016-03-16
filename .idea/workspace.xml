@@ -36,19 +36,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ae4af55-05fd-441d-890e-af923ab9a8df" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile/build/outputs/apk/mobile-debug-unaligned.apk" afterPath="$PROJECT_DIR$/mobile/build/outputs/apk/mobile-debug-unaligned.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile/build/outputs/apk/mobile-debug.apk" afterPath="$PROJECT_DIR$/mobile/build/outputs/apk/mobile-debug.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wear/build/outputs/apk/wear-debug-unaligned.apk" afterPath="$PROJECT_DIR$/wear/build/outputs/apk/wear-debug-unaligned.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wear/build/outputs/apk/wear-debug.apk" afterPath="$PROJECT_DIR$/wear/build/outputs/apk/wear-debug.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile/src/main/java/com/cs160/joleary/catnip/MobileResults.java" afterPath="$PROJECT_DIR$/mobile/src/main/java/com/cs160/joleary/catnip/MobileResults.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wear/src/main/java/com/cs160/joleary/catnip/Presidential.java" afterPath="$PROJECT_DIR$/wear/src/main/java/com/cs160/joleary/catnip/Presidential.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="7ae4af55-05fd-441d-890e-af923ab9a8df" name="Default" comment="" />
     <ignored path="Proj2.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -126,8 +114,8 @@
       <file leaf-file-name="Presidential.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wear/src/main/java/com/cs160/joleary/catnip/Presidential.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24266666">
-              <caret line="183" column="0" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.80266666">
+              <caret line="197" column="88" selection-start-line="197" selection-start-column="88" selection-end-line="197" selection-end-column="88" />
               <folding />
             </state>
           </provider>
@@ -3853,8 +3841,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wear/src/main/java/com/cs160/joleary/catnip/Presidential.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24266666">
-          <caret line="183" column="0" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.80266666">
+          <caret line="197" column="88" selection-start-line="197" selection-start-column="88" selection-end-line="197" selection-end-column="88" />
           <folding />
         </state>
       </provider>

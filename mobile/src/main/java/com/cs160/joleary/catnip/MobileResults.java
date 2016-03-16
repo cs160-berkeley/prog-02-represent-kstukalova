@@ -193,9 +193,19 @@ public class MobileResults extends Activity {
 
                     if (repr.getString(TAG_TITLE).equals("Rep")) {
                         count_representatives++;
+                        if (count_representatives < 2) {
+                            full_name_watch.add(full_name.get(full_name.size() - 1));
+                            String current_picture_url = "https://theunitedstates.io/images/congress/225x275/";
+                            current_picture_url = current_picture_url.concat(current_id + ".jpg");
+                            Log.e("omg what is id: ", current_id);
+                            picture_url_watch.add(current_picture_url);
+                            Log.e("urls: ", current_picture_url);
+                            party_watch.add(repr.getString(TAG_PARTY));
+                            term_watch.add(repr.getString(TAG_TERM_END));
+                            id_watch.add(repr.getString(TAG_UNIQUE_ID));
+                        }
                     }
-
-                    if (count_representatives < 2) {
+                    else {
                         full_name_watch.add(full_name.get(full_name.size() - 1));
                         String current_picture_url = "https://theunitedstates.io/images/congress/225x275/";
                         current_picture_url = current_picture_url.concat(current_id + ".jpg");
@@ -206,6 +216,7 @@ public class MobileResults extends Activity {
                         term_watch.add(repr.getString(TAG_TERM_END));
                         id_watch.add(repr.getString(TAG_UNIQUE_ID));
                     }
+
 
                     Log.e("size: ", full_name_watch.size() + "");
                     if (full_name_watch.size() == 3) {

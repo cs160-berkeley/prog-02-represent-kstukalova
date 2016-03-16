@@ -2,6 +2,10 @@ package com.cs160.joleary.catnip;
 
 import android.content.Context;
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
@@ -44,6 +48,7 @@ public class Presidential extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_presidential);
         Intent intent = getIntent();
+        mSensorManager = (SensorManager)this.getSystemService(SENSOR_SERVICE);
         String zip = intent.getStringExtra("zipcode");
 
         county_xml = (TextView) findViewById(R.id.county);
@@ -170,6 +175,46 @@ public class Presidential extends Activity {
             return null;
         }
         return json;
+    }
+
+    private SensorManager mSensorManager;
+    private float mAccel; // acceleration apart from gravity
+    private float mAccelCurrent; // current acceleration including gravity
+    private float mAccelLast; // last acceleration including gravity
+
+    private final SensorEventListener mSensorListener = new SensorEventListener() {
+
+        public void onSensorChanged(SensorEvent se) {
+            float x = se.values[0];
+            float y = se.values[1];
+            float z = se.values[2];
+            mAccelLast = mAccelCurrent;
+            mAccelCurrent = (float) Math.sqrt((double) (x*x + y*y + z*z));
+            float delta = mAccelCurrent - mAccelLast;
+            mAccel = mAccel * 0.9f + delta; // perform low-cut filter
+            // Log.i("xxx", "accel:" + mAccel);
+            if (mAccel >= 10) { // detect shake
+                Log.i("xxx", "accel:" + mAccel);
+                Intent watchIntent = new Intent(getBaseContext(), WatchToPhoneService.class);
+                watchIntent.putExtra("random", true);
+                getBaseContext().startService(watchIntent); // i think this is wrong
+            }
+        }
+
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        }
+    };
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mSensorManager.registerListener(mSensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    protected void onPause() {
+        mSensorManager.unregisterListener(mSensorListener);
+        super.onPause();
     }
 
 
